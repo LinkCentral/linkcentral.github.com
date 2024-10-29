@@ -206,8 +206,9 @@
             const nombre = document.getElementById('nombreCliente').innerText;
             const telefono = document.getElementById('telefonoCliente').innerText;
             const monto = document.getElementById('montoCliente').innerText;
+            const contraseña = document.getElementById('contraseñaCliente').innerText; // Obtener contraseña
 
-            const textoCompleto = `Nombre: ${nombre}\nTeléfono: ${telefono}\nMonto: ${monto}`;
+            const textoCompleto = `Nombre: ${nombre}\nTeléfono: ${telefono}\nMonto: ${monto}\nContraseña: ${contraseña}`; // Incluir contraseña
             navigator.clipboard.writeText(textoCompleto).then(() => {
                 alert("Información copiada al portapapeles.");
             });
@@ -228,6 +229,7 @@
             document.getElementById('nombreCliente').innerText = urlParams.get('nombre') || 'No especificado';
             document.getElementById('telefonoCliente').innerText = urlParams.get('telefono') || 'No especificado';
             document.getElementById('montoCliente').innerText = urlParams.get('monto') || 'No especificado';
+            document.getElementById('contraseñaCliente').innerText = urlParams.get('contrasena') || 'No especificado'; // Obtener contraseña
         }
 
         window.onload = function() {
@@ -259,25 +261,28 @@
             <p>Nombre: <span id="nombreCliente"></span></p>
             <p>Teléfono: <span id="telefonoCliente"></span></p>
             <p>Monto: <span id="montoCliente"></span></p>
+            <p>Contraseña: <span id="contraseñaCliente"></span></p> <!-- Nueva línea para contraseña -->
             <button onclick="copiarAlPortapapeles()">Copiar Todos los Datos</button>
             <p style="font-size: 12px;">Esta opción queda guardada en tu portapapeles, envíaselo al cajero@.</p>
-            <button onclick="mostrarInstrucciones()">¿como comenzar a jugar?</button>
+            <button onclick="mostrarInstrucciones()">¿Cómo comenzar a jugar?</button>
         </div>
 
-        <p style="margin-top: 20px;">Para cargar fichas dirigirse a <strong>Recarga 24hs</strong></p>
-        <button onclick="window.location.href='recarga24hs.html'" style="margin-top: 20px;">Recarga 24Hs</button>
-        <a href="https://wa.me/qr/APHRB33ZARANJ1" target="_blank" style="color: #ffe66d; display: block; margin-top: 10px;">Atención al Cliente</a>
+        <p style="margin-top: 20px;">Para cargar fichas dirígete a <strong>Recarga 24hs</strong></p>
+        <button onclick="window.location.href='recarga24hs.html'" class="step-button">Recarga 24hs</button>
     </div>
 
     <div class="overlay" onclick="cerrarInstrucciones()"></div>
     <div class="how-to-box">
-        <h2>Instrucciones para cargar fichas</h2>
+        <h2>¿Cómo comenzar a jugar?</h2>
+        <p>Para empezar a jugar, simplemente sigue estos pasos:</p>
         <ol>
-            <li>Una vez que hayas copiado los datos, dirigirse a <strong>Recarga 24hs</strong>.</li>
-            <li>Preciona el boton "Recarga 24Hs"</li>
-            <li>Elegi el cajero que quieras para poder comunicarte. (recorda enviarle la informacion copiada previamente)</li>
-            <li>Iniciar conversacion, y lo mas importane !!!GANAR¡¡¡.</li>
-            <li>Si tienes problemas, contáctanos a través de WhatsApp en el apartado "contactanos o ayuda al cliente".</li>
+            <li>Una vez hayas copiado los datos, dirigite a <strong>Recarga 24hs</strong>.</li>
+
+            <li>Preciona el boton "recarga 24Hs"</li>
+
+            <li>Elegi el cajer@ que desees para poder comunicarte (recorda enviar la informacion copiada anteriormente)</li>
+            
+            <li>Comenza la conversacion y !!LISTO¡¡ es momento de generar ingresos</li>
         </ol>
         <button onclick="cerrarInstrucciones()">Cerrar</button>
     </div>
