@@ -63,8 +63,7 @@
         }
         .login-container input[type="text"],
         .login-container input[type="password"],
-        .login-container input[type="number"],
-        .login-container input[type="date"] {
+        .login-container input[type="number"] {
             padding: 15px;
             margin: 10px 0;
             border: none;
@@ -151,15 +150,8 @@
             const confirmarContrasena = document.getElementById('confirmPassword').value;
             const telefono = document.getElementById('telefono').value;
             const monto = document.getElementById('monto').value;
-            const fechaNacimiento = new Date(document.getElementById('fechaNacimiento').value);
+            const edad = parseInt(document.getElementById('edad').value);
             const checkbox = document.getElementById('termsCheckbox').checked;
-
-            const hoy = new Date();
-            let edad = hoy.getFullYear() - fechaNacimiento.getFullYear();
-            const mes = hoy.getMonth() - fechaNacimiento.getMonth();
-            if (mes < 0 || (mes === 0 && hoy.getDate() < fechaNacimiento.getDate())) {
-                edad--;
-            }
 
             if (!checkbox) {
                 alert("Debe aceptar los términos y condiciones.");
@@ -177,7 +169,7 @@
             }
 
             const data = { nombre, contrasena, telefono, monto };
-            
+
             fetch(url, {
                 method: "POST",
                 mode: 'no-cors',
@@ -215,13 +207,14 @@
         </div>
         <h2>Registrarse</h2>
         <p class="subtitle">Estos datos no se divulgarán.</p>
+        <p class="subtitle">¡Regístrate ahora! Te lleva menos de 2 minutos 😎</p>
         <form onsubmit="registrarUsuario(event)">
             <input type="text" id="username" name="username" placeholder="Usuario" required>
             <input type="password" id="password" name="password" placeholder="Contraseña" required>
             <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirmar Contraseña" required>
             <input type="text" id="telefono" name="telefono" placeholder="Teléfono" required>
             <input type="number" id="monto" name="monto" placeholder="Monto a Cargar" required>
-            <input type="date" id="fechaNacimiento" name="fechaNacimiento" required>
+            <input type="number" id="edad" name="edad" placeholder="Colocar edad" required>
             
             <div class="checkbox-container">
                 <input type="checkbox" id="termsCheckbox">
@@ -230,6 +223,7 @@
             
             <button type="submit">Registrarse</button>
         </form>
+       
     </div>
 
     <div id="mensajeEdad" class="modal-edad">
@@ -243,18 +237,18 @@
         <div class="modal-content">
             <div class="column">
                 <p><strong>Términos y Condiciones del Casino Virtual</strong></p>
-                <p>1. Aceptación de Términos: Al acceder y utilizar nuestro casino virtual, aceptas estos términos y condiciones en su totalidad. Si no estás de acuerdo con alguno de los términos, por favor, no uses nuestros servicios.</p>
-                <p>2. Edad Legal: Debes tener al menos 18 años para participar en las actividades del casino virtual. La verificación de edad puede ser requerida.</p>
-                <p>3. Registro: Es obligatorio registrarse para participar. La información proporcionada debe ser veraz y precisa.</p>
-                <p>4. Responsabilidad: Eres responsable de mantener la confidencialidad de tus datos de inicio de sesión y de todas las actividades realizadas bajo tu cuenta.</p>
-                <p>5. Prohibición de Uso: No está permitido utilizar el casino virtual para fines ilegales o fraudulentos.</p>
-                <p>6. Cambios en los Términos: Nos reservamos el derecho de modificar estos términos en cualquier momento. Las modificaciones serán efectivas inmediatamente después de su publicación en el sitio.</p>
-                <p>7. Reembolso: No garantizamos reembolsos por pérdidas en el juego. Juegas bajo tu propio riesgo.</p>
-                <p>8. Propiedad Intelectual: Todo el contenido del casino virtual es propiedad exclusiva de nuestra empresa. No está permitido reproducir, distribuir ni modificar sin autorización.</p>
-                <p>9. Resolución de Conflictos: Cualquier disputa se resolverá de acuerdo a las leyes vigentes en nuestro país de operación.</p>
-                <p>10. Política de Privacidad: Tu información personal será tratada conforme a nuestra política de privacidad, que está disponible en el sitio web.</p>
-                <p>11. Modificaciones a los Servicios: Nos reservamos el derecho de suspender o modificar los servicios en cualquier momento sin previo aviso.</p>
-                <p>12. Aceptación de Riesgos: Al participar, reconoces que el juego implica riesgos y que puedes perder dinero. Juegas bajo tu propio riesgo.</p>
+                <p>1. Aceptación de Términos: Al acceder y utilizar nuestros servicios, aceptas estos términos y condiciones.</p>
+                <p>2. Uso del Servicio: Te comprometes a usar el servicio de manera legal y responsable.</p>
+                <p>3. Registro: Debes proporcionar información precisa y actualizada al registrarte.</p>
+                <p>4. Prohibiciones: No se permite el uso fraudulento o engañoso del servicio.</p>
+                <p>5. Responsabilidad: No somos responsables de las pérdidas o daños derivados del uso del servicio.</p>
+                <p>6. Cambios: Nos reservamos el derecho de modificar estos términos en cualquier momento.</p>
+                <p>7. Legislación Aplicable: Estos términos se rigen por la legislación vigente.</p>
+                <p>8. Contacto: Puedes contactarnos para cualquier duda o consulta.</p>
+                <p>9. Confidencialidad: Nos comprometemos a proteger tu información personal.</p>
+                <p>10. Seguridad: Implementamos medidas de seguridad para proteger tus datos.</p>
+                <p>11. Suspensión: Nos reservamos el derecho de suspender o cancelar tu cuenta si violas estos términos.</p>
+                <p>12. Aceptación: Al usar el servicio, confirmas que has leído y aceptado estos términos.</p>
             </div>
             <button class="close-button" onclick="cerrarTerminos()">Cerrar</button>
         </div>
